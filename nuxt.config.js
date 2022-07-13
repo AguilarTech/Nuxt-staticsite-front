@@ -7,7 +7,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Static Site',
+    title: 'Voiceover Artist',
     htmlAttrs: {
       lang: 'en',
     },
