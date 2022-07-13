@@ -1,13 +1,13 @@
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: false,
+  ssr: true,
 
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Anthonys_StaticSite',
+    title: 'Static Site',
     htmlAttrs: {
       lang: 'en',
     },
@@ -46,7 +46,6 @@ export default {
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: process.env.BASE_URL || 'http://localhost:1337/api',
-    debug: true,
   },
 
   publicRuntimeConfig: {
