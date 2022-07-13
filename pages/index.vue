@@ -69,61 +69,25 @@
             />
           </div>
         </div>
+
         <div
           class="bg-white shadow-md rounded mt-5 mx-auto max-w-full sm:mt-12 p-4 md:mt-16 lg:mt-5 xl:mt-5"
+          v-for="card in cards"
+          :key="card.id"
         >
           <h3
             class="my-3 text-2xl tracking-tight font-extrabold text-blue-400 sm:text-2xl md:text-2xl"
           >
-            VOICE ACTING CLIPS
+            {{ card.attributes.Title }}
           </h3>
-
-          <div class="my-4">I am a professional voice actor etc etc</div>
+          <div class="my-4">{{ card.attributes.body }}</div>
           <iframe
             width="100%"
             height="166"
             scrolling="no"
             frameborder="no"
             allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1184284492&color=%2369a3ff&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
-          ></iframe>
-        </div>
-        <div
-          class="bg-white shadow-md rounded mt-5 mx-auto max-w-full sm:mt-12 p-4 md:mt-16 lg:mt-5 xl:mt-5"
-        >
-          <h3
-            class="my-3 text-2xl tracking-tight font-extrabold text-blue-400 sm:text-2xl md:text-2xl"
-          >
-            TOURISM AUDIOGUIDES
-          </h3>
-
-          <div class="my-4">I am a professional voice actor etc etc</div>
-          <iframe
-            width="100%"
-            height="166"
-            scrolling="no"
-            frameborder="no"
-            allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/560463381&color=%2369a3ff&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
-          ></iframe>
-        </div>
-        <div
-          class="bg-white shadow-md rounded mt-5 mx-auto max-w-full sm:mt-12 p-4 md:mt-16 lg:mt-5 xl:mt-5"
-        >
-          <h3
-            class="my-3 text-2xl tracking-tight font-extrabold text-blue-400 sm:text-2xl md:text-2xl"
-          >
-            COMPILATION SHOWREEL
-          </h3>
-
-          <div class="my-4">I am a professional voice actor etc etc</div>
-          <iframe
-            width="100%"
-            height="166"
-            scrolling="no"
-            frameborder="no"
-            allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/308478684&color=%2369a3ff&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+            :src="card.attributes.Soundcloud_LInk"
           ></iframe>
         </div>
       </div>
