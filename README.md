@@ -1,4 +1,4 @@
-# Anthonys_StaticSite
+# Nuxt_StaticSite
 
 ## Build Setup
 
