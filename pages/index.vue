@@ -31,28 +31,34 @@
                   <h1
                     class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl"
                   >
-                    <span class="block xl:inline">Voiceover Artist</span>
+                    <span class="block xl:inline">{{
+                      siteSetup.mainHeading
+                    }}</span>
                   </h1>
 
                   <h2
                     class="text-4xl tracking-tight font-extrabold text-blue-500 sm:text-5xl md:text-6xl"
                   >
-                    <span class="block xl:inline">Anthony</span>
+                    <span class="block xl:inline">{{
+                      siteSetup.mainSubheading
+                    }}</span>
                   </h2>
 
                   <div
                     class="m-6 text-base sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-8 md:text-xl lg:mx-0"
                   >
-                    <button
+                    <a
+                      :href="siteSetup.mainTelephone"
                       class="rounded-full bg-yellow-400 hover:bg-yellow-300 hover:text-gray-50 py-2 px-6 text-white font-bold"
                     >
                       Call
-                    </button>
-                    <button
+                    </a>
+                    <a
+                      :href="siteSetup.mainEmail"
                       class="mx-4 rounded-full bg-yellow-400 hover:bg-yellow-300 hover:text-gray-50 py-2 px-6 text-white font-bold"
                     >
                       Email
-                    </button>
+                    </a>
                   </div>
                   <div
                     class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start"
@@ -64,7 +70,7 @@
           <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
             <img
               class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
-              src="https://images.unsplash.com/photo-1561446289-4112a4f79116?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"
+              :src="siteSetup.mainImageLink"
               alt="Voice Actor"
             />
           </div>
@@ -110,14 +116,28 @@ export default {
   data() {
     return {
       cards: [],
+      siteSetup: {},
       error: null,
     }
   },
 
   async fetch() {
     try {
-      const response = await this.$axios.get('/cards')
-      this.cards = response.data.data
+      const Cardsresponse = await this.$axios.get('/cards')
+      this.cards = Cardsresponse.data.data
+    } catch (error) {
+      this.error = error
+      console.error(error)
+    }
+
+    try {
+      const siteSetupResponse = await this.$axios.get('/site-setup')
+      this.siteSetup = siteSetupResponse.data.data.attributes
+
+      this.siteSetup.mainEmail = 'mailto:' + this.siteSetup.mainEmail
+      this.siteSetup.mainTelephone = 'tel:' + this.siteSetup.mainTelephone
+
+      console.log(`mainHeading: ${this.siteSetup.mainHeading}`)
     } catch (error) {
       this.error = error
       console.error(error)
